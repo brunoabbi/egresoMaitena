@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mi Egreso</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: 'Montserrat', sans-serif;
+  background: radial-gradient(
+    ellipse at top,
+    #38577e 0%,
+    #192f4d 45%,
+    #0b1528 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+  color: white;
+}
+
+/* Destellos del fondo */
+
+.destellos {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.destellos span {
+  position: absolute;
+  color: #dbe9ff;
+  font-size: 14px;
+  opacity: 0.5;
+  animation: brillar 4s infinite alternate;
+}
+
+.destellos span:nth-child(1) {
+  top: 12%;
+  left: 15%;
+}
+
+.destellos span:nth-child(2) {
+  top: 20%;
+  right: 12%;
+  animation-delay: 1s;
+}
+
+.destellos span:nth-child(3) {
+  bottom: 15%;
+  left: 10%;
+  animation-delay: 2s;
+}
+
+.destellos span:nth-child(4) {
+  bottom: 10%;
+  right: 15%;
+}
+
+.destellos span:nth-child(5) {
+  top: 6%;
+  left: 55%;
+  animation-delay: 3s;
+}
+
+/* Tarjeta principal */
+
+.tarjeta {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  padding: 45px 30px;
+  background: rgba(15, 30, 52, 0.65);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(192, 213, 240, 0.5);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  animation: aparecer 1.5s ease;
+}
+
+/* Marco interior */
+
+.tarjeta::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(192, 213, 240, 0.15);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.decoracion {
+  font-size: 18px;
+  color: #b5cbe7;
+  letter-spacing: 5px;
+  margin-bottom: 25px;
+}
+
+.subtitulo {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #b5cbe7;
+  margin-bottom: 20px;
+}
+
+/* Título */
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(48px, 12vw, 65px);
+  font-weight: 400;
+  color: #e1ebfa;
+  margin: 0;
+  text-shadow: 0 0 25px rgba(190, 215, 255, 0.2);
+}
+
+/* Separador */
+
+.separador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: #b5cbe7;
+  margin: 25px 0;
+}
+
+.separador::before,
+.separador::after {
+  content: "";
+  height: 1px;
+  width: 55px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #b5cbe7,
+    transparent
+  );
+}
+
+/* Texto */
+
+p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: #d6e1f0;
+  max-width: 320px;
+  margin: 0 auto 30px;
+}
+
+/* Botones */
+
+.botones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn {
+  width: 100%;
+  max-width: 280px;
+  padding: 16px 22px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+/* Botón de música */
+
+.btn-musica {
+  background: transparent;
+  border: 1px solid #91aaca;
+  color: #d6e5f9;
+}
+
+/* Botón de invitación */
+
+.btn-invitacion {
+  background: linear-gradient(
+    135deg,
+    #e0ebfa,
+    #9fbadd
+  );
+  border: 1px solid transparent;
+  color: #172b48;
+  box-shadow: 0 5px 25px rgba(170, 200, 240, 0.2);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(170, 200, 240, 0.3);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:focus-visible {
+  outline: 2px solid #d6e5f9;
+  outline-offset: 4px;
+}
+
+.btn svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Frase final */
+
+.pie {
+  font-family: 'Great Vibes', cursive;
+  font-size: 25px;
+  color: #b5cbe7;
+  margin-top: 30px;
+}
+
+.estrella {
+  color: #b5cbe7;
+  margin-top: 15px;
+}
+
+/* Animaciones */
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes brillar {
+  from {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 0.9;
+    transform: scale(1.2);
+  }
+}
+
+/* Adaptación a celulares */
+
+@media (max-width: 480px) {
+  body {
+    padding: 20px;
+  }
+
+  .tarjeta {
+    padding: 40px 25px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="destellos" aria-hidden="true">
+  <span>✦</span>
+  <span>✧</span>
+  <span>✦</span>
+  <span>✧</span>
+  <span>✦</span>
+</div>
+
+<main class="tarjeta">
+
+  <div class="decoracion">✧ ─── ✧ ─── ✧</div>
+
+  <div class="subtitulo">
+    UNA NOCHE ESPECIAL
+  </div>
+
+  <h1>Maitena</h1>
+
+  <div class="separador">♡</div>
+
+  <p>
+    Para vivir esta invitación de una forma aún más
+    especial, te recomiendo activar la música antes
+    de ingresar.
+    <br><br>
+    Luego, abrí la invitación y disfrutá cada detalle.
+  </p>
+
+  <div class="botones">
+
+    <button class="btn btn-musica" onclick="activarMusica()">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M9 18V5l12-2v13"/>
+        <ellipse cx="6" cy="18" rx="3" ry="2"/>
+        <ellipse cx="18" cy="16" rx="3" ry="2"/>
+      </svg>
+
+      Activar música
+
+    </button>
+
+    <button class="btn btn-invitacion" onclick="irInvitacion()">
+
+      Ver invitación
+
+      <svg viewBox="0 0 24 24">
+        <path d="M5 12h14"/>
+        <path d="m12 5 7 7-7 7"/>
+      </svg>
+
+    </button>
+
+  </div>
+
+  <div class="pie">
+    Un momento para recordar
+  </div>
+
+  <div class="estrella">✧</div>
+
+</main>
+
+<audio id="music" loop>
+  <source src="AIRBAG - Cicatrices - Mentira La Verdad.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function activarMusica() {
+  const music = document.getElementById("music");
+  music.play();
+}
+
+function irInvitacion() {
+  window.open("https://xn--15aosmarisol-chb.my.canva.site/", "_blank");
+}
+
+</script>
+
+</body>
+</html>
